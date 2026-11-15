@@ -1,0 +1,4 @@
+project_name = "devops-promotion-lab"
+environment  = "pdev"
+region       = "ap-south-1"
+owner        = "devops-team"
