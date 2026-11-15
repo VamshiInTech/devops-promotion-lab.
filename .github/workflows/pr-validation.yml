@@ -1,0 +1,27 @@
+
+name: PDEV Pull Request Validation
+
+on:
+  pull_request:
+    branches:
+      - pdev
+
+jobs:
+  validate:
+    name: Validate Terraform Configuration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display configuration
+        run: cat terraform-config.txt
+
+      - name: Validate environment
+        run: |
+          grep -q 'environment  = "pdev"' terraform-config.txt
+          echo "PDEV validation successful!"
+
+      - name: Final status
+        run: echo "All checks passed!"
